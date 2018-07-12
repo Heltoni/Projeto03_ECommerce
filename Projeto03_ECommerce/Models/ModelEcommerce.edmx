@@ -109,7 +109,7 @@
           <Property Name="Cnpj" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Telefone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Endereço" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Endereco" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Pedidos" Relationship="Self.FK_TBPedidos_TBClientes" FromRole="TBClientes" ToRole="TBPedidos" />
         </EntityType>
         <EntityType Name="Item">
@@ -211,7 +211,7 @@
                 <ScalarProperty Name="Cnpj" ColumnName="Cnpj" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
                 <ScalarProperty Name="Telefone" ColumnName="Telefone" />
-                <ScalarProperty Name="Endereço" ColumnName="Endereço" />
+                <ScalarProperty Name="Endereco" ColumnName="Endereço" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -62,7 +62,11 @@ Projeto ECommerce
 			Alterar o nome das classes através do modelo e o nome das propriedades tirando o "TB" dos nomes e colocar os nomes das Navigation Properties no singular... 
 			inserindo "Info" quando o nome da propriedade for igual ao nome da classe. Ex.: Classe Cliente Propriedade ClienteInfo
 
-
+		6 - Criar Actions para o Crud
+		7 - Gerar as Views para as Actions
+		8 - Criar pasta "DB" na raiz do projeto
+			Criar Classe "Dados"
+			Criar metodos para Crud
 
 
 

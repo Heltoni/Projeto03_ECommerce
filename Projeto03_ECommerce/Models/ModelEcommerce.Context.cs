@@ -16,8 +16,6 @@ namespace Projeto03_ECommerce.Models
     public partial class ECommerceEntities : DbContext
     {
         public ECommerceEntities()
-            //base ENVIA A STRING PARA A SUPERCLASSE
-            //ESTÁ É A STRING DE CONEXÃO QUE ESTÁ SENDO ENVIADA PARA A SUPERCLASSE
             : base("name=ECommerceEntities")
         {
         }

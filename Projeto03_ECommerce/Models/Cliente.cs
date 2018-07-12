@@ -11,7 +11,8 @@ namespace Projeto03_ECommerce.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Cliente
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,10 +22,23 @@ namespace Projeto03_ECommerce.Models
         }
     
         public int ClienteId { get; set; }
+
+        [Required(ErrorMessage = "O CNPJ é obrigatório!")]
+        [Display(Name = "CNPJ do Cliente")]
+        [StringLength(maximumLength:14,MinimumLength =14, ErrorMessage = "O CNPJ deve conter apenas 14 números!")]
         public string Cnpj { get; set; }
+
+        [Required(ErrorMessage = "O Nome do cliente é obrigatório!")]
+        [Display(Name = "Nome do Cliente")]
         public string Nome { get; set; }
+
+        [Required(ErrorMessage = "O Telefone é obrigatório!")]
+        [Display(Name = "Telefone do Cliente")]
         public string Telefone { get; set; }
-        public string EndereÃ§o { get; set; }
+
+        [Required(ErrorMessage = "O Endereço é obrigatório!")]
+        [Display(Name = "Endereço do Cliente")]
+        public string Endereco { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pedido> Pedidos { get; set; }
