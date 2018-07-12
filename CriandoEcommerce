@@ -1,0 +1,94 @@
+https://www.devmedia.com.br/introducao-ao-ddd-em-net/32724
+
+Projeto ECommerce
+	Projeto Web > Vázio > Referencias em MVC
+		1 - Criar o Controller da Home
+		
+		2 - Criar a View para a controller Home
+		
+		3 - Alterar o laout.cshtml
+			Title 
+			ApplicationName(ActionLink)
+			@RenderBody() Carregará as páginas filho
+			footer
+		
+		4 - Criar base de dados e as tabelas
+			*IDs são chaves primarias com autoincremento
+			
+			TBClientes
+				ClienteId	int			Unchecked
+				Cnpj		varchar(14)	Unchecked
+				Nome		varchar(50)	Unchecked
+				Telefone	varchar(20)	Unchecked
+				Endereço	varchar(50)	Unchecked
+				
+			TBPedidos
+				PedidoId		int			Unchecked
+				ClienteId		int			Unchecked
+				DataPedido		datetime	Unchecked
+				NumeroPedido	varchar(10)	Unchecked			
+			
+			TBItens
+				ItemId		int		Unchecked
+				PedidoId	int		Unchecked
+				ProdutoId	int		Unchecked
+				Quantidade	float	Unchecked			
+			
+			TBProdutos
+				ProdutoId		int	Unchecked
+				Descricao		varchar(50)	Unchecked
+				Unidade			varchar(5)	Unchecked
+				ValorUnitario	float	Unchecked			
+	
+			Criar o relacionamento entre as tabelas
+		
+		5 - Criar o Modelo de Acesso ao banco de dados com Entity FrameWork (DataBase First)
+			Botão direito Models > add new item > Dados > ADO.NET Entity
+			Nome: ModelEcommerce > EF Designer From DataBase
+			Configurar conexão e nomear como ECommerceEntities
+			Selecionar as tabelas e nomear o ModelName para ECommerceModel
+			Concluir
+		
+		
+			Será exibida a seguinte mensagem:
+				A execução deste modelo de texto pode danificar seriamente seu computador. Se você o obteve por meio de uma fonte não confiável, não o execute. 
+				Clique em OK para executar o modelo. 
+				Clique em Cancelar para interromper o processo.
+				[x] Não mostrar novamente
+				[OK]
+			
+			Obs.: Se for necessário alterar o nome de algum campo... devemos utilizar o modelo (Diagrama) pois ele reproduzirá a alteração para todo o projeto
+			
+			Alterar o nome das classes através do modelo e o nome das propriedades tirando o "TB" dos nomes e colocar os nomes das Navigation Properties no singular... 
+			inserindo "Info" quando o nome da propriedade for igual ao nome da classe. Ex.: Classe Cliente Propriedade ClienteInfo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+		
