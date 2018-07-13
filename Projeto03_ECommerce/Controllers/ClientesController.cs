@@ -28,7 +28,7 @@ namespace Projeto03_ECommerce.Controllers
             if (ModelState.IsValid)
             {
                 Dados.IncluirCliente(cliente);
-                return RedirectToAction("Index");
+                return RedirectToAction("Listar");
             }
 
             return View();
@@ -37,9 +37,46 @@ namespace Projeto03_ECommerce.Controllers
 
         public ActionResult Listar()
         {
-            return View();
+            return View(Dados.ListarClientes());            
         }
 
+        //? ESTE SIMBOLO FAZ COM QUE A VARIAVEL INT POSSA SER NULA
+        public ActionResult Detalhar(int? id)
+        {
+            var cliente = Dados.BuscarCliente(id);
+
+            if (id==null)
+            {
+                ViewBag.MensagemErro = "Nenhum parâmetro informado na URL!";
+                return View("Erro");
+            }
+
+            if (cliente == null)
+            {
+                ViewBag.MensagemErro = "Cliente não encontrado!";
+                return View("Erro");
+            }
+            
+            return View(cliente);
+            
+        }
+
+        //public ActionResult Excluir(int? id)
+        //{
+        //    var cliente = Dados.ExcluirCliente(id);
+
+        //    if (id == null)
+        //    {
+        //        ViewBag.MensagemErro = "Nenhum parâmetro informado na URL!";
+        //        return View("Erro");
+        //    }
+        //    if (cliente)
+        //    {
+        //        ViewBag.MensagemErro = "Cliente não encontrado!";
+        //        return View("Erro");
+        //    }
+
+        //}
     }
 
 }

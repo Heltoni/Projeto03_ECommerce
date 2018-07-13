@@ -176,6 +176,9 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Clientes\Index.cshtml" />
     <Content Include="Views\Clientes\Incluir.cshtml" />
+    <Content Include="Views\Clientes\Listar.cshtml" />
+    <Content Include="Views\Clientes\Detalhar.cshtml" />
+    <Content Include="Views\Shared\Erro.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

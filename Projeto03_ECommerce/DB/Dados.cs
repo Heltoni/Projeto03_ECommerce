@@ -19,5 +19,40 @@ namespace Projeto03_ECommerce.DB
                 ctx.SaveChanges();
             }
         }
+
+        public static List<Cliente> ListarClientes()
+        {
+            using (var ctx = new ECommerceEntities())
+            {
+                return ctx.Clientes.ToList<Cliente>();
+            }
+        }
+        public static Cliente BuscarCliente(int? id)
+        {
+            using (var ctx = new ECommerceEntities())
+            {
+                //PROPRIEDADE WHERE É DO ENTITY PROPRIEDADE FIND É DO IENUMERABLE
+                //MAIS INDICADO UTILIZAR O ENTITY
+                //O WHERE RETORNA UMA LISTA, POR ISSO UTILIZAMOS O FIRSTORDEFAULT
+                return ctx
+                    .Clientes
+                    .Where(s => s.ClienteId == id)
+                    .FirstOrDefault();
+            }
+        }
+
+        //public static bool ExcluirCliente(int id)
+        //{
+
+        //    using (var ctx = new ECommerceEntities())
+        //    {
+
+        //        return ctx
+        //            .Clientes
+        //            .Remove()                 
+
+        //    }
+
+        //}
     }
 }
