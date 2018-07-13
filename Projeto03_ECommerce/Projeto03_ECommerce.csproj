@@ -181,6 +181,7 @@
     <Content Include="Views\Clientes\Listar.cshtml" />
     <Content Include="Views\Clientes\Detalhar.cshtml" />
     <Content Include="Views\Shared\Erro.cshtml" />
+    <Content Include="Views\Shared\Sucesso.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

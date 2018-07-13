@@ -41,18 +41,28 @@ namespace Projeto03_ECommerce.DB
             }
         }
 
-        //public static bool ExcluirCliente(int id)
-        //{
+        public static bool ExcluirCliente(int? id)
+        {
+            try
+            {
+                using (var ctx = new ECommerceEntities())
+                {
+                    ctx
+                        .Clientes
+                        .Remove(
+                            ctx
+                            .Clientes
+                            .Where(s => s.ClienteId == id)
+                            .FirstOrDefault());
+                    ctx.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
 
-        //    using (var ctx = new ECommerceEntities())
-        //    {
-
-        //        return ctx
-        //            .Clientes
-        //            .Remove()                 
-
-        //    }
-
-        //}
+        }
     }
 }

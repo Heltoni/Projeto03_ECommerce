@@ -61,22 +61,23 @@ namespace Projeto03_ECommerce.Controllers
             
         }
 
-        //public ActionResult Excluir(int? id)
-        //{
-        //    var cliente = Dados.ExcluirCliente(id);
+        public ActionResult Excluir(int? id)
+        {            
+            if (id == null)
+            {
+                ViewBag.MensagemErro = "Nenhum parâmetro informado na URL!";
+                return View("Erro");
+            }
 
-        //    if (id == null)
-        //    {
-        //        ViewBag.MensagemErro = "Nenhum parâmetro informado na URL!";
-        //        return View("Erro");
-        //    }
-        //    if (cliente)
-        //    {
-        //        ViewBag.MensagemErro = "Cliente não encontrado!";
-        //        return View("Erro");
-        //    }
-
-        //}
+            bool cliente = Dados.ExcluirCliente(id);
+            if (cliente == false)
+            {
+                ViewBag.MensagemErro = "Cliente não pode ser excluído!";
+                return View("Erro");
+            }
+            ViewBag.MensagemSucesso = "Cliente excluído!";
+            return View("Sucesso");
+        }
     }
 
 }
