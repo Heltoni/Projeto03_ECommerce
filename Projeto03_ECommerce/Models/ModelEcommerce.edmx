@@ -13,7 +13,7 @@
           <Property Name="Cnpj" Type="varchar" MaxLength="14" Nullable="false" />
           <Property Name="Nome" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Telefone" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="Endereço" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Endereco" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="TBItens">
           <Key>
@@ -211,7 +211,7 @@
                 <ScalarProperty Name="Cnpj" ColumnName="Cnpj" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
                 <ScalarProperty Name="Telefone" ColumnName="Telefone" />
-                <ScalarProperty Name="Endereco" ColumnName="Endereço" />
+                <ScalarProperty Name="Endereco" ColumnName="Endereco" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

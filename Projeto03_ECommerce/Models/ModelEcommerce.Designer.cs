@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\no0104\Documents\Curso_AspNet\03_MVC\Projeto03_ECommerce\Projeto03_ECommerce\Models\ModelEcommerce.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\heltoni.silveira\Documents\Heltoni_AspNet\Curso_AspNet\Projeto03_ECommerce\Projeto03_ECommerce\Models\ModelEcommerce.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
