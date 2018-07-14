@@ -27,7 +27,7 @@ namespace Projeto03_ECommerce.Controllers
         {
             if (ModelState.IsValid)
             {
-                Dados.IncluirCliente(cliente);
+                ClienteDB.IncluirCliente(cliente);
                 return RedirectToAction("Listar");
             }
 
@@ -37,19 +37,19 @@ namespace Projeto03_ECommerce.Controllers
 
         public ActionResult Listar()
         {
-            return View(Dados.ListarClientes());            
+            return View(ClienteDB.ListarClientes());            
         }
 
         //? ESTE SIMBOLO FAZ COM QUE A VARIAVEL INT POSSA SER NULA
         public ActionResult Detalhar(int? id)
         {
-            var cliente = Dados.BuscarCliente(id);
-
             if (id==null)
             {
                 ViewBag.MensagemErro = "Nenhum parâmetro informado na URL!";
                 return View("Erro");
             }
+
+            var cliente = ClienteDB.BuscarCliente(id);
 
             if (cliente == null)
             {
@@ -61,22 +61,82 @@ namespace Projeto03_ECommerce.Controllers
             
         }
 
-        public ActionResult Excluir(int? id)
-        {            
+        public ActionResult Alterar(int? id)
+        {
+
             if (id == null)
             {
                 ViewBag.MensagemErro = "Nenhum parâmetro informado na URL!";
                 return View("Erro");
             }
 
-            bool cliente = Dados.ExcluirCliente(id);
-            if (cliente == false)
+            var cliente = ClienteDB.BuscarCliente(id);
+
+            if (cliente == null)
             {
-                ViewBag.MensagemErro = "Cliente não pode ser excluído!";
+                ViewBag.MensagemErro = "Cliente não encontrado!";
                 return View("Erro");
             }
-            ViewBag.MensagemSucesso = "Cliente excluído!";
-            return View("Sucesso");
+
+            return View(cliente);
+
+        }
+
+        [HttpPost]
+        public ActionResult Alterar(Cliente cliente)
+        {
+            if (ModelState.IsValid)
+            {
+                ClienteDB.AlterarCliente(cliente);
+                return RedirectToAction("Listar");
+            }
+                        
+            return Alterar(cliente.ClienteId);
+        }
+
+        //public ActionResult Excluir(int? id)
+        //{            
+        //    if (id == null)
+        //    {
+        //        ViewBag.MensagemErro = "Nenhum parâmetro informado na URL!";
+        //        return View("Erro");
+        //    }
+
+        //    bool cliente = Dados.ExcluirCliente(id);
+        //    if (cliente == false)
+        //    {
+        //        ViewBag.MensagemErro = "Cliente não pode ser excluído!";
+        //        return View("Erro");
+        //    }
+        //    ViewBag.MensagemSucesso = "Cliente excluído!";
+        //    return View("Sucesso");
+        //}
+        public ActionResult Excluir(int? id)
+        {
+            if (id == null)
+            {
+                ViewBag.MensagemErro = "Nenhum parâmetro informado na URL!";
+                return View("Erro");
+            }
+
+            var cliente = ClienteDB.BuscarCliente(id);
+
+            if (cliente == null)
+            {
+                ViewBag.MensagemErro = "Cliente não encontrado!";
+                return View("Erro");
+            }
+
+            return View(cliente);
+        }
+
+        //FOI NECESSÁRIO INSERIR UM METODO POST PARA QUE O USUARIO POSSA SE DEFENDER
+        [HttpPost]
+        public ActionResult Excluir(int? id, Cliente cliente)
+        {
+            cliente.ClienteId = (int)id;
+            ClienteDB.RemoverCliente(ClienteDB.BuscarCliente(id));
+            return RedirectToAction("Listar");
         }
     }
 

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Projeto03_ECommerce.Models.Produto>
+
+@{
+    ViewBag.Title = "Listar todos os Produtos";
+}
+
+<h2>Listar</h2>
+
+<p>
+    @Html.ActionLink("Incluir novo Produto", "Incluir")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Unidade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValorUnitario)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Unidade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ValorUnitario)
+        </td>
+        <td>
+            @Html.ActionLink("Alterar", "Alterar", new { id=item.ProdutoId }) |
+            @Html.ActionLink("Detalhar", "Detalhar", new { id=item.ProdutoId }) |
+            @Html.ActionLink("Excluir", "Excluir", new { id=item.ProdutoId })
+        </td>
+    </tr>
+}
+
+</table>

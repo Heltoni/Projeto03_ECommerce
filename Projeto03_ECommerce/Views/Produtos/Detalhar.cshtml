@@ -1,0 +1,43 @@
+﻿@model Projeto03_ECommerce.Models.Produto
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>    
+    Detalhes do Produto: @Html.DisplayFor(model => model.ProdutoId)
+</h2>
+
+<div>
+    <h4>Produto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Unidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Unidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorUnitario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorUnitario)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Voltar", "Listar", "Produtos")    
+</p>

@@ -11,7 +11,8 @@ namespace Projeto03_ECommerce.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Produto
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,12 +20,28 @@ namespace Projeto03_ECommerce.Models
         {
             this.Itens = new HashSet<Item>();
         }
-    
+                
         public int ProdutoId { get; set; }
+
+        [Required(ErrorMessage = "A descrição é de preenchimento obrigatório!")]
+        [Display(Name = "Descrição")]
         public string Descricao { get; set; }
+
+        [Required(ErrorMessage = "A unidade é de preenchimento obrigatório!")]
+        [StringLength(maximumLength: 5, MinimumLength = 2, ErrorMessage = "A unidade informada deve conter entre 2 e 5 caracteres!")]
+        [Display(Name = "Unidade")]
         public string Unidade { get; set; }
+                
+
+        [Required(ErrorMessage = "O valor unitário é de preenchimento obrigatório!")]
+        [Display(Name = "Valor Unitário")]
+        [DataType(DataType.Currency)]
+        [Range(0.1, 99999999.99,
+        ErrorMessage = "O valor não pode ser menor ou igual a zero!")]               
+        [DisplayFormat(DataFormatString = "{0:C}",
+            ApplyFormatInEditMode = true)]
         public double ValorUnitario { get; set; }
-    
+        
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Item> Itens { get; set; }
     }

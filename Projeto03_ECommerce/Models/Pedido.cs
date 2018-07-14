@@ -11,7 +11,8 @@ namespace Projeto03_ECommerce.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Pedido
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,8 +22,20 @@ namespace Projeto03_ECommerce.Models
         }
     
         public int PedidoId { get; set; }
+
+        [Display(Name = "Selecione o Cliente")]
         public int ClienteId { get; set; }
+
+        [Required(ErrorMessage ="A data do pedido é de preenchimento obrigatório!")]
+        [DataType(DataType.Date, ErrorMessage = "A data do pedido deve ser informada com o formato dd/mm/aaaa")]
+        [DisplayFormat(DataFormatString ="{0:dd/MM/yyyy}",
+            ApplyFormatInEditMode = true)]
+        [Display(Name ="Data do Pedido")]
         public System.DateTime DataPedido { get; set; }
+
+        [Required(ErrorMessage = "O número do pedido é de preenchimento obrigatório!")]
+        [Display(Name = "Numero do Pedido")]
+        [StringLength(maximumLength:10, MinimumLength =2)]
         public string NumeroPedido { get; set; }
     
         public virtual Cliente ClienteInfo { get; set; }

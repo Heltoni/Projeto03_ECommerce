@@ -133,7 +133,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="DB\Dados.cs" />
+    <Compile Include="Controllers\PedidosController.cs" />
+    <Compile Include="Controllers\ProdutosController.cs" />
+    <Compile Include="DB\ClienteDB.cs" />
+    <Compile Include="DB\PedidoDB.cs" />
+    <Compile Include="DB\ProdutoDB.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -182,6 +186,14 @@
     <Content Include="Views\Clientes\Detalhar.cshtml" />
     <Content Include="Views\Shared\Erro.cshtml" />
     <Content Include="Views\Shared\Sucesso.cshtml" />
+    <Content Include="Views\Clientes\Alterar.cshtml" />
+    <Content Include="Views\Clientes\Excluir.cshtml" />
+    <Content Include="Views\Produtos\Index.cshtml" />
+    <Content Include="Views\Produtos\Incluir.cshtml" />
+    <Content Include="Views\Produtos\Listar.cshtml" />
+    <Content Include="Views\Produtos\Detalhar.cshtml" />
+    <Content Include="Views\Pedidos\Index.cshtml" />
+    <Content Include="Views\Pedidos\CriarPedido.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

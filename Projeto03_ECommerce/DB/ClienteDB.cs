@@ -1,12 +1,13 @@
 ﻿using Projeto03_ECommerce.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
 namespace Projeto03_ECommerce.DB
 {
-    public class Dados
+    public class ClienteDB
     {
         //METODO PARA INCLUIR UM NOVO CLIENTE
         public static void IncluirCliente(Cliente cliente)
@@ -41,28 +42,45 @@ namespace Projeto03_ECommerce.DB
             }
         }
 
-        public static bool ExcluirCliente(int? id)
-        {
-            try
-            {
-                using (var ctx = new ECommerceEntities())
-                {
-                    ctx
-                        .Clientes
-                        .Remove(
-                            ctx
-                            .Clientes
-                            .Where(s => s.ClienteId == id)
-                            .FirstOrDefault());
-                    ctx.SaveChanges();
-                    return true;
-                }
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+        //public static bool ExcluirCliente(int? id)
+        //{
+        //    try
+        //    {
+        //        using (var ctx = new ECommerceEntities())
+        //        {
+        //            ctx
+        //                .Clientes
+        //                .Remove(
+        //                    ctx
+        //                    .Clientes
+        //                    .Where(s => s.ClienteId == id)
+        //                    .FirstOrDefault());
+        //            ctx.SaveChanges();
+        //            return true;
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return false;
+        //    }
 
+        //}
+        public static void AlterarCliente(Cliente cliente)
+        {
+            using (var ctx = new ECommerceEntities())
+            {
+                ctx.Entry<Cliente>(cliente).State = EntityState.Modified;
+                ctx.SaveChanges();
+            }
         }
+
+        public static void RemoverCliente(Cliente cliente)
+        {
+            using (var ctx = new ECommerceEntities ())
+            {
+                ctx.Entry<Cliente>(cliente).State = EntityState.Deleted;
+                ctx.SaveChanges();
+            }
+        }        
     }
 }

@@ -1,13 +1,12 @@
 ﻿@model Projeto03_ECommerce.Models.Cliente
 
 @{
-    ViewBag.Title = "Detalhes";
+    ViewBag.Title = "Excluir";
 }
 
-<h2>
-    Detalhes do Cliente: @Html.DisplayFor(model => model.ClienteId)
-</h2>
+<h2>Confirmação</h2>
 
+<h3>Tem certeza que deseja remover o cliente?</h3>
 <div>    
     <hr />
     <dl class="dl-horizontal">
@@ -44,7 +43,13 @@
         </dd>
 
     </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sim, quero remover" class="btn btn-danger" /> |            
+            @Html.ActionLink("Não, voltar para a lista", "Listar")
+        </div>
+    }
 </div>
-<p>    
-    @Html.ActionLink("Voltar", "Listar", "Clientes")
-</p>
