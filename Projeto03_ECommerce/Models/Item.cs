@@ -11,11 +11,18 @@ namespace Projeto03_ECommerce.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Item
-    {
+    {                
         public int ItemId { get; set; }
+
+        [Required]
+        [Display(Name = "Pedido")]
         public int PedidoId { get; set; }
+
+        [Required]
+        [Display(Name = "Produto")]
         public int ProdutoId { get; set; }
         public double Quantidade { get; set; }
     

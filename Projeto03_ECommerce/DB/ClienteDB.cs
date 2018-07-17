@@ -28,6 +28,18 @@ namespace Projeto03_ECommerce.DB
                 return ctx.Clientes.ToList<Cliente>();
             }
         }
+        //LINQ - LANGUAGE INTEGRATED QUERY
+        public static List<Cliente> ListarClientesLinq()
+        {
+            //NO LUGAR DE UTILIZAR O JOIN DO ENTITY PODEMOS UTILIZAR O LINQ
+
+            var ctx = new ECommerceEntities();
+            //NA PRIMEIRA LINHA FAZEMOS UMA REFERENCIA A COLEÇÃO CLIENTES
+            //NA SEGUNDA LINHA EQUIVALE A SELECT * FROM
+            var resposta = from c in ctx.Clientes
+                           select c;
+            return resposta.ToList();
+        }
         public static Cliente BuscarCliente(int? id)
         {
             using (var ctx = new ECommerceEntities())
@@ -78,8 +90,16 @@ namespace Projeto03_ECommerce.DB
         {
             using (var ctx = new ECommerceEntities ())
             {
-                ctx.Entry<Cliente>(cliente).State = EntityState.Deleted;
-                ctx.SaveChanges();
+                try
+                {
+                    ctx.Entry<Cliente>(cliente).State = EntityState.Deleted;
+                    ctx.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    //INSERIR TRY NO CONTROLLER E CHAMAR A VIEW
+                    throw;
+                }
             }
         }        
     }

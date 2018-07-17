@@ -1,7 +1,7 @@
 ﻿@model Projeto03_ECommerce.Models.Pedido
 
 @{
-    ViewBag.Title = "CriarPedido";
+    ViewBag.Title = "Criar Pedido";
 }
 
 <h2>Criar novo Pedido</h2>
@@ -16,6 +16,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ClienteId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
+                @*ALTERAMOS PARA DROPDOWNLIST*@
                 @Html.DropDownListFor(model => model.ClienteId, 
                     (SelectList)ViewBag.Clientes,
                     new { @class = "form-control" } )

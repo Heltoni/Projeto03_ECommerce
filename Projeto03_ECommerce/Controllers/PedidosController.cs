@@ -18,20 +18,10 @@ namespace Projeto03_ECommerce.Controllers
         public ActionResult CriarPedido()
         {
             var listaClientes = ClienteDB.ListarClientes();
-
-            
-            
-            
-            
             
             /*LEMBRAR O PROFESSOR DE FAZER A VALIDAÇÃO QUANDO CLIENTES NÃO CADASTRADOS
              APRESENTAR PÁGINA DE ERRO*/
-
-
-
-
-
-
+             
             if (listaClientes.Count==0)
             {
                 //RETORNAR PÁGINA DE ERRO
@@ -56,5 +46,22 @@ namespace Projeto03_ECommerce.Controllers
             return CriarPedido();
 
         }
+
+        //LISTANDO OS PEDIDOS POR CLIENTE
+        public ActionResult ListarPedidos(int? id)
+        {
+            var listaClientes = ClienteDB.ListarClientes();
+
+            if (listaClientes == null || listaClientes.Count == 0)
+            {
+                ViewBag.MensagemErro = "Nenhum Clientes Cadastrados para receber pedidos!";
+                return View("Erro");
+            }
+
+            ViewBag.Clientes = new SelectList(listaClientes, "ClienteId", "Nome");
+
+            return View(PedidoDB.ListarPedidosLinq(id));
+        }
+
     }
 }
