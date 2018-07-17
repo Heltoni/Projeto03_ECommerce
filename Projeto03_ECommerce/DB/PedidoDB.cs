@@ -122,5 +122,41 @@ namespace Projeto03_ECommerce.DB
                 return lista;
             }
         }
+
+        public static List<ItensPedidoViewModel> ListarItens(int? idPedido)
+        {
+            var ctx = new ECommerceEntities();
+            var lista = from item in ctx.Itens
+                        join pedido in ctx.Pedidos
+                        on  item.PedidoId equals pedido.PedidoId
+                        join produto in ctx.Produtos
+                        on item.ProdutoId equals produto.ProdutoId
+                        where (idPedido == null ? pedido.PedidoId > 0 : pedido.PedidoId == idPedido)
+                        select new
+                        {
+                            CodigoItem = item.ItemId,
+                            NumeroPedido = pedido.NumeroPedido,
+                            Descricao = produto.Descricao,
+                            Quantidade = item.Quantidade,
+                            ValorTotal = produto.ValorUnitario * item.Quantidade
+                        };
+
+            List<ItensPedidoViewModel> pedidos = new List<ItensPedidoViewModel>();
+
+            foreach (var item in lista)
+            {
+                pedidos.Add(new ItensPedidoViewModel()
+                {
+                    CodigoItem = item.CodigoItem,
+                    NumeroPedido = item.NumeroPedido,
+                    Descricao = item.Descricao,
+                    Quantidade = item.Quantidade,
+                    ValorTotal = item.ValorTotal
+                });
+            }
+
+            return pedidos;
+
+        }
     }
 }

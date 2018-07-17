@@ -73,5 +73,22 @@ namespace Projeto03_ECommerce.Controllers
             return View();
         }
 
+        public  ActionResult ListarItens(int? id)
+        {
+            var ListaPedidos = PedidoDB.ListarTodosPedidosVM();
+
+            if (ListaPedidos == null || ListaPedidos.Count == 0)
+            {
+                ViewBag.MensagemErro = "Nenhum Pedido Cadastrado!";
+                return View("Erro");
+            }
+
+            ViewBag.Pedidos = new
+                SelectList(ListaPedidos, "PedidoId", "PedidoCliente");
+
+            return View(PedidoDB.ListarItens(id));
+
+        }
+
     }
 }

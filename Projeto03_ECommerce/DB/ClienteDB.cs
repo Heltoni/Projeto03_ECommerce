@@ -98,7 +98,7 @@ namespace Projeto03_ECommerce.DB
                 catch (Exception)
                 {
                     //INSERIR TRY NO CONTROLLER E CHAMAR A VIEW
-                    throw;
+                    throw; //FormatException("");
                 }
             }
         }        
