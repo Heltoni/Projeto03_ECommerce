@@ -1,0 +1,58 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Exemplo01 - Javascript Puro</title>
+    <script type="text/javascript">
+        function exibirValores() {
+            //obtendo os valores dos campos de entrada
+            var vCodigo = document.getElementById("codigo").value;
+            var vDescricao = document.getElementById("descricao").value;
+            var vPreco = document.getElementById("preco").value;
+
+            //gerando uma resposta
+            //var resposta = "Código: " + vCodigo +
+            //    "\nDescrição: " + vDescricao +
+            //    "\nPreço: " + vPreco;
+            
+            //exibindo a resposta em uma caixa de mensagens
+            //alert(resposta);
+
+
+            var resposta = "Código: " + vCodigo +
+                "<br/>Descrição: " + vDescricao +
+                "<br/>Preço: " + vPreco;
+
+            //exibindo a resposta na div
+            //o html não entende o \n, porém isso tivemos que alterar a msg
+            var vResultado = document.getElementById("resultado");
+            vResultado.innerHTML = resposta;
+        }
+    </script>
+</head>
+<body>
+    <div> 
+        <form>
+            <h1>Simulando um cadastro de produtos</h1>
+            <label>Códgio do Produto</label><br/>
+            <input type="number" id="codigo" /><br /><br />
+
+            <label>Descrição</label><br />
+            <input type="text" id="descricao" /><br /><br />
+
+            <label>Preço</label><br />
+            <input type="text" id="preco" /><br /><br />
+
+            <input type="button" value="Exibir Valores" onclick="exibirValores();"/>
+            <br /><br />
+            <div id="resultado"></div>
+        </form>
+    </div>
+</body>
+</html>
