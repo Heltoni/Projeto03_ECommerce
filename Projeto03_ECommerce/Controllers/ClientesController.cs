@@ -138,6 +138,27 @@ namespace Projeto03_ECommerce.Controllers
             ClienteDB.RemoverCliente(ClienteDB.BuscarCliente(id));
             return RedirectToAction("Listar");
         }
+
+        //REQUISIÇÃO AJAX
+        public ActionResult PesquisarClientes()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult PesquisarClientes(string busca)
+        {
+            List<Cliente> lista = ClienteDB.ListarClientes(busca);
+
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_ListaClientes", lista);
+            }
+            else
+            {
+                return View(lista);
+            }
+        }
     }
 
 }

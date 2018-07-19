@@ -31,5 +31,10 @@ namespace Projeto03_ECommerce.Controllers
             //PRIMEIRO EXEMPLO COM JQUERY
             return View();
         }
+        public ActionResult Exemplo05()
+        {
+            //SEGUNDO EXEMPLO COM JQUERY
+            return View();
+        }
     }
 }

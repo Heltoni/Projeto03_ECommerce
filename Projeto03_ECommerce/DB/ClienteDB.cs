@@ -28,6 +28,24 @@ namespace Projeto03_ECommerce.DB
                 return ctx.Clientes.ToList<Cliente>();
             }
         }
+
+        public static List<Cliente> ListarClientes(string busca)
+        {
+            using (var ctx = new ECommerceEntities())
+            {
+                if (string.IsNullOrEmpty(busca))
+                {
+                    return ListarClientes();
+                }
+                else
+                {
+                    return ctx.Clientes
+                        .Where(c=>c.Nome.Contains(busca))
+                        .ToList<Cliente>(); 
+                }
+            }
+        }
+
         //LINQ - LANGUAGE INTEGRATED QUERY
         public static List<Cliente> ListarClientesLinq()
         {
