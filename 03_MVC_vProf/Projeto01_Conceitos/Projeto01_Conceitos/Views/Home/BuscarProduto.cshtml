@@ -1,0 +1,12 @@
+﻿@model Projeto01_Conceitos.Models.Produto
+@{
+    ViewBag.Title = "BuscarProduto";
+}
+
+<h2>BuscarProduto</h2>
+
+<div class="alert alert-info">
+    Código:    <strong>@Model.Codigo</strong><br />
+    Descrição: <strong>@Model.Descricao</strong><br />
+    Preço:     <strong>@Model.Preco.ToString("c")</strong><br />
+</div>

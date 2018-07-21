@@ -1,0 +1,27 @@
+﻿@using Projeto01_Conceitos.Models
+@model ICollection<Produto>
+@{
+    ViewBag.Title = "ListarProdutos";
+}
+
+<h2>Listar Produtos</h2>
+<p>@ViewData["TituloLista"]</p>
+
+<table class="table table-striped">
+    <tr>
+        <th>Código</th>
+        <th>Descrição</th>
+        <th>Preço</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Codigo</td>
+            <td>@item.Descricao</td>
+            <td>@item.Preco.ToString("c")</td>
+        </tr>
+    }
+
+
+</table>
+

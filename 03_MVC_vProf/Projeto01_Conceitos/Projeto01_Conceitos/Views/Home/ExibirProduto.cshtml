@@ -1,0 +1,15 @@
+﻿
+@model Projeto01_Conceitos.Models.Produto
+@{
+    ViewBag.Title = "ExibirProduto";
+}
+
+<h2>Exibir Dados do Produto</h2>
+<p>@ViewBag.TituloPagina</p>
+
+<div class="alert alert-info">
+    Código:    <strong>@Model.Codigo</strong><br />
+    Descrição: <strong>@Model.Descricao</strong><br />
+    Preço:     <strong>@Model.Preco.ToString("c")</strong><br />
+</div>
+
